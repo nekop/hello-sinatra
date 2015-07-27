@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "*** pre assemble"
-curl -o ./assemble.upstrem https://raw.githubusercontent.com/openshift/sti-ruby/master/2.0/.sti/bin/assemble
-ls -la ./
+curl -o ./assemble.upstream https://raw.githubusercontent.com/openshift/sti-ruby/master/2.0/.sti/bin/assemble
 . ./assemble.upstream
 echo "*** post assemble"
