@@ -1,6 +1,11 @@
 #!/bin/bash
 
 echo "*** start assemble"
-. /usr/local/sti/assemble
+if [ -r /usr/local/sti/assemble ]; then
+    . /usr/local/sti/assemble
+fi
+if [ -r /usr/libexec/s2i/assemble ]; then
+    . /usr/libexec/s2i/assemble
+fi
 bundle exec rake test
 echo "*** end assemble"
