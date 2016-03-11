@@ -1,11 +1,8 @@
 #!/bin/bash
 
 echo "*** start assemble"
-if [ -r /usr/local/sti/assemble ]; then
-    . /usr/local/sti/assemble
-fi
-if [ -r /usr/libexec/s2i/assemble ]; then
-    . /usr/libexec/s2i/assemble
+if [ -n "$STI_SCRIPTS_PATH" ]; then
+    . "$STI_SCRIPTS_PATH/assemble"
 fi
 bundle exec rake test
 echo "*** end assemble"
