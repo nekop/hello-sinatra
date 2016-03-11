@@ -2,7 +2,9 @@
 
 echo "*** start assemble"
 if [ -n "$STI_SCRIPTS_PATH" ]; then
+    echo "*** call default assemble"
     . "$STI_SCRIPTS_PATH/assemble"
 fi
+ echo "*** custom assemble part, execute unit test"
 bundle exec rake test
 echo "*** end assemble"
