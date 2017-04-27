@@ -5,5 +5,5 @@ get '/' do
 end
 
 get "/env" do
-  puts "#{ request.env }"
+  "#{ request.env }"
 end
