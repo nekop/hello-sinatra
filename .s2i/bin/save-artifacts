@@ -1,4 +1,3 @@
 #!/bin/bash
 
-echo "Save artifact"
-env
+echo "Save artifact" > /proc/1/fd/1
