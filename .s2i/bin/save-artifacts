@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo "Save artifact" > /proc/1/fd/1

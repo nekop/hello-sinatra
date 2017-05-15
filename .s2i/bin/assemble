@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "Assemble"
-. $STI_SCRIPTS_PATH/assemble
