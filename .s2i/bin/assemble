@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cat
+cat "$@"
 
-# or redirect it by "cat >| foo.tar.gz"
+# or redirect it by
+# cat "$@">| foo.tar.gz
 
 $S2I_SCRIPTS_PATH/assemble
 
