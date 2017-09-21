@@ -5,5 +5,5 @@ cat "$@"
 # or redirect it by
 # cat "$@">| foo.tar.gz
 
-$S2I_SCRIPTS_PATH/assemble
+$STI_SCRIPTS_PATH/assemble
 
