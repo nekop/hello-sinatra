@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat "$@" |> a.tar
+cp -a /tmp/artifacts/bundle ./
 
 echo "This is custom assemble script!"
 
