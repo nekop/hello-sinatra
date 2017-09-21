@@ -2,6 +2,8 @@
 
 cat "$@"
 
+echo "This is custom assemble script!"
+
 # or redirect it by
 # cat "$@">| foo.tar.gz
 
