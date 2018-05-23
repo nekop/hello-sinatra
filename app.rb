@@ -12,3 +12,7 @@ end
 get "/env" do
   "#{ request.env }"
 end
+
+get "/hostname" do
+  "#{ ENV['hostname'] }"
+end
