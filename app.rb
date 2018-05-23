@@ -14,5 +14,5 @@ get "/env" do
 end
 
 get "/hostname" do
-  "#{ ENV['hostname'] }"
+  "#{ ENV['HOSTNAME'] }"
 end
