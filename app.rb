@@ -16,3 +16,7 @@ end
 get "/hostname" do
   "#{ ENV['HOSTNAME'] }"
 end
+
+get "/path/test" do
+  "/path/test"
+end
