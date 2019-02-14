@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/cookies'
 
 get '/' do
   "hello\n"
@@ -11,6 +12,10 @@ end
 
 get "/env" do
   "#{ request.env }"
+end
+
+get "/cookies" do
+  "#{ cookies }"
 end
 
 get "/hostname" do
