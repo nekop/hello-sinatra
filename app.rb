@@ -24,3 +24,7 @@ end
 get "/path/test" do
   "/path/test"
 end
+
+get "/metrics" do
+  "hello_sinatra_random #{rand(0..100)}"
+end
