@@ -33,6 +33,8 @@ get "/hijack" do
   if request.env['rack.hijack?']
     request.env['rack.hijack'].call
     io = request.env['rack.hijack_io']
-    io.peeraddr
+    puts io.peeraddr
+    "hijack"
   end
+    "no hijack"
 end
