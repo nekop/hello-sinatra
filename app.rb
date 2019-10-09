@@ -29,13 +29,3 @@ get "/metrics" do
   "hello_sinatra_random #{rand(0..100)}"
 end
 
-get "/hijack" do
-  if request.env['rack.hijack?']
-    request.env['rack.hijack'].call
-    io = request.env['rack.hijack_io']
-    io.write(io.peeraddr.to_s)
-    io.flush
-    io.close
-  end
-    "no hijack"
-end
