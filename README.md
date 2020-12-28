@@ -44,3 +44,58 @@ EOF
 oc get route -n istio-system # Confirm Route is created for this Gateway
 curl -v http://$INGRESS_HOSTNAME # Confirm "server: istio-envoy" header
 ```
+
+## OpenShift Pipelines s2i configuration
+
+```
+oc -n openshift-image-registry extract cm/serviceca
+oc -n openshift-pipelines create configmap config-registry-cert --from-file=cert=./service-ca.crt # Configure service CA cert for internal registry access
+oc create -f - <<EOF
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: hello-sinatra-build
+spec:
+  resources:
+  - name: app-source
+    type: git
+  - name: app-image
+    type: image
+  tasks:
+  - name: build
+    taskRef:
+      name: s2i-ruby-pr
+      kind: ClusterTask
+    resources:
+      inputs:
+      - name: source
+        resource: app-source
+      outputs:
+      - name: image
+        resource: app-image
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: app-image
+spec:
+  type: image
+  params:
+  - name: url
+    value: image-registry.openshift-image-registry.svc:5000/test-tekton/hello-sinatra:latest
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: app-source
+spec:
+  type: git
+  params:
+  - name: url
+    value: https://github.com/nekop/hello-sinatra
+  - name: revision
+    value: v3
+EOF
+
+tkn p start hello-sinatra-build
+```
