@@ -2,16 +2,29 @@
 
 Sample Ruby Sinatra application, useful for testing OpenShift
 
+## Standard s2i
+
+```
+oc new-app https://github.com/nekop/hello-sinatra/
+oc expose service/hello-sinatra
+oc create route edge --service=hello-sinatra --insecure-policy=Redirect
+```
+
+For OpenShift v3, you may need to specify v3 branch:
+
+```
+oc new-app https://github.com/nekop/hello-sinatra/#v3
+```
+
 ## OpenShift Service Mesh configuration
 
 ```
 oc new-project test-istio
 oc -n istio-system patch servicemeshmemberrolls.maistra.io/default --type json -p '[{"op":"add","path":"/spec/members/-","value":"test-istio"}]' # Add test-istio project to ServiceMeshMemberRolls for enabling Istio on this project
-oc -n istio-system patch servicemeshcontrolplanes.maistra.io/basic-install --type json -p '[{"op":"add","path":"/spec/istio/gateways/istio-ingressgateway","value":{"ior_enabled":"true"}}]' --dry-run -o yaml # Enable OpenShift Ingress -> Istio Ingress auto routing
 oc new-app https://github.com/nekop/hello-sinatra
 oc patch deploy/hello-sinatra -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}}'
 # We need to create Gateway and VirtualService insread of Route
-SUBDOMAIN=<your subdomain>
+SUBDOMAIN=$(oc get ingress.config.openshift.io/cluster -o go-template={{.spec.domain}})
 INGRESS_HOSTNAME=hello-sinatra-test-istio.$SUBDOMAIN
 oc create -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
