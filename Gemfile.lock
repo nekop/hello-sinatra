@@ -3,31 +3,35 @@ GEM
   specs:
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    power_assert (2.0.0)
+    nio4r (2.5.8)
+    power_assert (2.0.1)
+    puma (5.6.2)
+      nio4r (~> 2.0)
     rack (2.2.3)
-    rack-protection (2.1.0)
+    rack-protection (2.2.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (13.0.3)
-    ruby2_keywords (0.0.4)
-    sinatra (2.1.0)
+    rake (13.0.6)
+    ruby2_keywords (0.0.5)
+    sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.0)
       tilt (~> 2.0)
-    test-unit (3.3.9)
+    test-unit (3.5.3)
       power_assert
     tilt (2.0.10)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
+  puma
   rack-test
   rake
   sinatra
   test-unit
 
 BUNDLED WITH
-   2.1.4
+   2.2.22
