@@ -29,6 +29,8 @@ get "/metrics" do
   "hello_sinatra_random #{rand(0..100)}"
 end
 
+a = []
+
 get "/oom" do
   loop do
     a << "1234567890"
