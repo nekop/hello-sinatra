@@ -1,0 +1,4 @@
+echo '===='
+env
+echo '===='
+. /usr/libexec/s2i/assemble
