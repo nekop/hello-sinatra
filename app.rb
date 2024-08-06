@@ -6,7 +6,7 @@ end
 
 get '/sleep/:sec' do
   sleep params[:sec].to_i
-  "sleep params[:sec].to_i, hello\n"
+  "sleep #{params[:sec].to_i}, hello\n"
 end
 
 get "/env" do
