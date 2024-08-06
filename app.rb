@@ -4,8 +4,8 @@ get '/' do
   "hello\n"
 end
 
-get '/sleep320' do
-  sleep 320
+get '/sleep/:sec' do
+  sleep request.params["sec"].to_i
   "hello\n"
 end
 
