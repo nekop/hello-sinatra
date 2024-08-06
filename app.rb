@@ -5,7 +5,7 @@ get '/' do
 end
 
 get '/sleep/:sec' do
-  sleep request.params["sec"].to_i
+  sleep request.params[:sec].to_i
   "hello\n"
 end
 
