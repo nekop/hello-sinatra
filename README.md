@@ -112,3 +112,12 @@ EOF
 
 tkn p start hello-sinatra-build
 ```
+
+
+## Update deps
+
+```
+sudo dnf install ruby ruby-devel -y
+gem install nio4r
+bundle update
+```
