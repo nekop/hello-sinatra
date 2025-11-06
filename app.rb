@@ -13,6 +13,10 @@ get "/env" do
   "#{ request.env }"
 end
 
+get '/clientip' do
+  "#{request.ip}"
+end
+
 get "/cookies" do
   "#{ request.cookies }"
 end
